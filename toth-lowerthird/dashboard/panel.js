@@ -1,3 +1,5 @@
+'use strict';
+
 $('#toth-lowerthird_in').click(function () { nodecg.sendMessage('lowerthirdIn', updateData()); });
 $('#toth-lowerthird_out').click(function () { nodecg.sendMessage('lowerthirdOut'); });
 $('#toth-lowerthird_pulse10').click(function () { nodecg.sendMessage('lowerthirdPulse', pulse(10)); });

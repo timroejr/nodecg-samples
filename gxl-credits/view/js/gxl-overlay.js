@@ -1,3 +1,5 @@
+'use strict';
+
 if (!String.prototype.startsWith) {
     Object.defineProperty(String.prototype, 'startsWith', {
         enumerable: false,
@@ -10,7 +12,7 @@ if (!String.prototype.startsWith) {
     });
 }
 
-$(document).on('ncgReady', function() {
+$(function() {
     nodecg.listenFor('startCredits', startCredits);
 
     nodecg.listenFor('stopCredits', stopCredits);
@@ -49,7 +51,7 @@ $(document).on('ncgReady', function() {
                     })
                     .to($(title), fadeOut, {
                         opacity: 0
-                    }, "+="+ duration);
+                    }, '+='+ duration);
             } else {
                 // Peeps
                 creditsTimeline.call(updateElements, [title, staff])
@@ -59,7 +61,7 @@ $(document).on('ncgReady', function() {
                     .call(scrollStaff, [fadeIn/2, duration, fadeOut/2])
                     .to($('#mainContainer'), fadeOut, {
                         opacity: 0
-                    }, "+="+ duration)
+                    }, '+='+ duration)
                     .call(resetScroll);
             }
         });
@@ -74,8 +76,8 @@ $(document).on('ncgReady', function() {
             var li = document.createElement('li');
             li.innerHTML = member;
 
-            if (member === "StatusSpec" ||
-                member === "Spec Tools") {
+            if (member === 'StatusSpec' ||
+                member === 'Spec Tools') {
                 li.innerHTML = '<i>'+ member +'</i>';
             }
 
@@ -89,17 +91,17 @@ $(document).on('ncgReady', function() {
 
     function scrollStaff(fadeIn, duration, fadeOut) {
         var containerHeight = $('#centeringContainer').height();
-        var staffHeight = $('#title').height() + $('#staff').height();
+        var staffHeight = title.height() + staff.height();
 
         if (staffHeight > containerHeight) {
-            staffTimeline.to($('#staff'), duration - (fadeIn+fadeOut), {
-                top: (containerHeight - staffHeight - 10) + "px",
+            staffTimeline.to(staff, duration - (fadeIn+fadeOut), {
+                top: (containerHeight - staffHeight - 10) + 'px',
                 ease: Power2.easeInOut
-            })
+            });
         }
     }
 
     function resetScroll() {
-        $('#staff').css('top', '0');
+        staff.css('top', '0');
     }
 });

@@ -1,4 +1,6 @@
-$(document).on('ncgReady', function () {
+'use strict';
+
+$(function () {
     // pass data straight into our function that handles it, preferred for simplicity
     nodecg.listenFor('socialmediaIn', showLinks);
     nodecg.listenFor('socialmediaOut', hideLinks);
@@ -12,17 +14,17 @@ $(document).on('ncgReady', function () {
 
     $.ionSound({
         sounds: [           // set needed sounds names
-            "socialmedia_in-v2",
-            "socialmedia_out-v2"
+            'socialmedia_in-v2',
+            'socialmedia_out-v2'
         ],
-        path: "snd/",       // set path to sounds
+        path: 'snd/',       // set path to sounds
         multiPlay: true,    // can play multiple sounds at once
-        volume: "0.15"      // not so loud please
+        volume: '0.15'      // not so loud please
     });
 
     function showLinks() {
         // play sound
-        $.ionSound.play("socialmedia_in-v2");
+        $.ionSound.play('socialmedia_in-v2');
 
         $('#hattycontainer').css('opacity', '100');
         $('#hatty').css('transform-origin', '100% 0%');
@@ -30,10 +32,10 @@ $(document).on('ncgReady', function () {
         var tm = new TimelineMax({paused: true});
 
         //add our tweens to the timeline
-        tm.to($('#links'), 0.5, {width: "31.25%"}, "0");
-        tm.to($('#linktext'), 0.5, {top: "0px", ease: Quad.easeOut}, "0.475");
-        tm.to($('#hatty'), 0.5, {webkitTransform: "translate3d(0, 0px, 0px) rotateX(0deg)", ease: Quad.easeOut}, "0.5");
-        tm.to($('#hatty'), 0.2, {opacity: "1", ease: Quad.easeOut}, "0.5");
+        tm.to($('#links'), 0.5, {width: '31.25%'}, '0');
+        tm.to($('#linktext'), 0.5, {top: '0px', ease: Quad.easeOut}, '0.475');
+        tm.to($('#hatty'), 0.5, {webkitTransform: 'translate3d(0, 0px, 0px) rotateX(0deg)', ease: Quad.easeOut}, '0.5');
+        tm.to($('#hatty'), 0.2, {opacity: '1', ease: Quad.easeOut}, '0.5');
         tm.addCallback(startHatLoop, 1);
 
         tm.play();
@@ -46,13 +48,13 @@ $(document).on('ncgReady', function () {
 
     function hideLinks() {
         //play sound
-        $.ionSound.play("socialmedia_out-v2");
+        $.ionSound.play('socialmedia_out-v2');
 
         var tm = new TimelineMax({paused: true});
 
-        tm.to($('#linktext'), 0.5, {top: "-238px", ease: Quad.easeOut}, "0");
-        tm.to($('#links'), 0.5, {width: "0%"}, "0.450");
-        tm.to($('#hattycontainer'), 0.370, {right: "555px"}, "0.450");
+        tm.to($('#linktext'), 0.5, {top: '-238px', ease: Quad.easeOut}, '0');
+        tm.to($('#links'), 0.5, {width: '0%'}, '0.450');
+        tm.to($('#hattycontainer'), 0.370, {right: '555px'}, '0.450');
 
         tm.addCallback(startHatOutAnim, 0.5);
         tm.addCallback(resetHat, 1.5);

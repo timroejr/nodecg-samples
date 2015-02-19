@@ -1,3 +1,5 @@
+'use strict';
+
 var credits = [];
 
 function updateStaff() {
@@ -23,7 +25,7 @@ function updateStaff() {
 
             staff.forEach(function(member) {
                 html += member +'<br>';
-            })
+            });
         });
 
         html = 'Duration: ' + duration + ' seconds<br><br>' + html;
