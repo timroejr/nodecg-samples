@@ -1,0 +1,29 @@
+<link rel="import" href="/components/polymer/polymer.html">
+
+<link rel="import" href="/display/gxl-credits/components/paper-button/paper-button.html">
+<link rel="import" href="/display/gxl-credits/components/paper-toggle-button/paper-toggle-button.html">
+
+<dom-module id="gxl-credits-panel">
+    <style>
+    </style>
+    <template>
+        <paper-button>Update from file</paper-button>
+        <paper-toggle-button>Show</paper-toggle-button>
+    </template>
+</dom-module>
+
+<script src="/nodecg-api.js"></script>
+
+<script>
+    Polymer({
+        is: "gxl-credits-panel",
+        properties: {
+            bundle: Object
+        },
+        ready: function() {
+            this.nodecg = new NodeCG(this.bundle, window.socket);
+
+
+        }
+    });
+</script>
